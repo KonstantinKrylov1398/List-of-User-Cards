@@ -1,0 +1,179 @@
+      .background {
+          align-items: center;
+          max-width: 1440px;
+          width: 100%;
+          margin: 0 auto;
+          min-height: 1024px;
+          height: 100%;
+      }
+      
+      .userpage_header {
+          width: 100%;
+          background: #512689;
+          height: 265px;
+          display: flex;
+          padding-right: 70px;
+          padding-left: 70px;
+          padding-top: 30px;
+          align-items: flex-start;
+      }
+      
+      .userpage_headerbuttonone {
+          max-width: 79px;
+          width: 100%;
+          background: transparent;
+          padding: 8px 16px 8px 16px;
+          border-radius: 8px;
+          border: 1px solid #F8F8F8;
+          color: #F8F8F8;
+          cursor: pointer;
+          height: 38px;
+      }
+      
+      .userpage_partner {
+          font-size: 32px;
+          font-weight: 400;
+          line-height: 38px;
+          color: #ffffff;
+      }
+      
+      .userpage_username {
+          font-size: 64px;
+          font-weight: 400;
+          line-height: 75px;
+          color: #ffffff;
+          margin-bottom: 16px;
+          display: inline-block;
+      }
+      
+      .userpage_headerimg {
+          border-radius: 90px;
+          width: 187px;
+          height: 187px;
+      }
+      
+      .userpage_user {
+          max-width: 1138px;
+          width: 100%;
+          display: flex;
+          margin-left: 28px;
+      }
+      
+      .userpage_textusername {
+          margin-left: 28px;
+      }
+      
+      .userpage_main {
+          width: 100%;
+          display: flex;
+          padding-top: 50px;
+          padding-left: 188px;
+          padding-right: 20px;
+      }
+      
+      .userpage_email {
+          margin-left: 112px;
+          display: flex;
+      }
+      
+      .userpage_emailname {
+          margin-left: 8px;
+      }
+      
+      .userpage_textcontent {
+          max-width: 630px;
+          width: 100%;
+          font-size: 16px;
+          font-weight: 400;
+          line-height: 22px;
+      }
+      
+      .userpage_headerbuttontwo {
+          max-width: 79px;
+          width: 100%;
+          background: transparent;
+          padding: 8px 16px 8px 16px;
+          border-radius: 8px;
+          border: 1px solid #F8F8F8;
+          color: #F8F8F8;
+          cursor: pointer;
+          height: 38px;
+          flex-grow: 3;
+      }
+      
+      .userpage_showsvg {
+          display: none;
+          cursor: pointer
+      }
+      
+      @media(max-width:908px) {
+          .userpage_partner {
+              font-size: 20px;
+              line-height: 23px;
+          }
+          .userpage_username {
+              font-size: 36px;
+              line-height: 42px;
+          }
+          .userpage_header {
+              justify-content: center;
+          }
+          .userpage_main {
+              flex-direction: column-reverse;
+          }
+          .userpage_email {
+              margin-left: 0px;
+              display: flex;
+              margin-bottom: 20px;
+          }
+          .userpage_main {
+              padding-left: 70px;
+          }
+      }
+      
+      @media(max-width:756px) {
+          .userpage_user {
+              flex-direction: column-reverse;
+              justify-content: center;
+              margin-left: 0px;
+          }
+          .userpage_textusername {
+              margin-left: 0px;
+              text-align: center;
+          }
+          .userpage_username {
+              margin-bottom: 8px;
+          }
+          .userpage_partner {
+              margin-bottom: 8px;
+          }
+          .userpage_headerimg {
+              margin: auto;
+          }
+          .userpage_header {
+              padding-top: 12px;
+              padding-left: 16px;
+              padding-right: 16px;
+          }
+          .userpage_main {
+              padding-left: 16px;
+          }
+      }
+      
+      @media(max-width:420px) {
+          .userpage_headerbuttonone {
+              display: none;
+          }
+          .userpage_headerbuttontwo {
+              display: none;
+          }
+          .userpage_showsvg {
+              display: block;
+          }
+          .userpage_user {
+              align-self: center;
+          }
+          .userpage_header {
+              height: 415px;
+          }
+      }
