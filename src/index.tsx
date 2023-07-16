@@ -4,6 +4,7 @@ import ReactDOM from "react-dom";
 import { createStore } from "redux";
 import { userReducer } from "./redux/hotelsReducer";
 import { Provider } from "react-redux";
+import "normalize.css";
 const store = createStore(userReducer);
 ReactDOM.render(
   <Provider store={store}>

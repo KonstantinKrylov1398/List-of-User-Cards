@@ -105,7 +105,7 @@
         .allusers_buttonshow {
             margin-top: 36px;
             background: transparent;
-            padding: 8px 16px 8px 16px;
+            padding: 8px 8px 8px 16px;
             border-radius: 8px;
             border: 1px solid #151317;
             font-size: 16px;
@@ -117,6 +117,7 @@
             width: 100%;
             align-self: center;
             margin-bottom: 70px;
+            display: flex;
         }
         
         .allusers_arrow {
