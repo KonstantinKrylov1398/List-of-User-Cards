@@ -4,7 +4,7 @@ const NODE_ENV = process.env.NODE_ENV;
 const IS_DEV = process.env.NODE_ENV === "development";
 module.exports = {
     mode: NODE_ENV ? NODE_ENV : "production",
-    entry: "./src/index.tsx",
+    entry: { App: './src/App.tsx' },
     output: {
         path: path.resolve(__dirname, "dist"),
         filename: "index.js",
