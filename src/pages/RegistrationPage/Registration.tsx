@@ -30,7 +30,7 @@ export function Registration() {
               localStorage.setItem("test", JSON.stringify(response.data));
             });
 
-          navigate("/allusers");
+          navigate("/users");
         }}
         validationSchema={schemaRegistration}
       >
@@ -98,7 +98,7 @@ export function Registration() {
             ) : null}
             <button className={style.form_button}>Зарегистрироваться</button>
             <button className={style.form_button_registration}>
-              <a onClick={() => navigate("/")} className={style.form_a}>
+              <a onClick={() => navigate("/login")} className={style.form_a}>
                 Уже зарегистрированы?
               </a>
             </button>

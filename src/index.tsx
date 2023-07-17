@@ -1,14 +1,12 @@
 import { App } from "./App";
 import React from "react";
 import ReactDOM from "react-dom";
-import { createStore } from "redux";
-import { userReducer } from "./redux/hotelsReducer";
-import { Provider } from "react-redux";
 import "normalize.css";
-const store = createStore(userReducer);
+import { BrowserRouter } from "react-router-dom";
+
 ReactDOM.render(
-  <Provider store={store}>
+  <BrowserRouter>
     <App />
-  </Provider>,
+  </BrowserRouter>,
   document.getElementById("App")
 );

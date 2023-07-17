@@ -1,13 +1,9 @@
 import React, { useState } from "react";
 import Like from "../../assets/Like.svg";
 import Arrow from "../../assets/Arrow.svg";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { actionUser } from "../redux/actionUser";
 export function MainAllUsers({ style, arrayUsers }: any) {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
   const [showUsers, setShowUsers] = useState(false);
   const numberOfUsers = showUsers ? arrayUsers.length : 8;
   return (
@@ -18,12 +14,7 @@ export function MainAllUsers({ style, arrayUsers }: any) {
               return (
                 <li
                   onClick={() => {
-                    axios
-                      .get(`https://reqres.in/api/users/${user.id}`)
-                      .then((resp) => {
-                        dispatch(actionUser(resp.data));
-                      });
-                    navigate("/user");
+                    navigate(`/users/${user.id}`);
                   }}
                   className={style.allusers_li}
                 >

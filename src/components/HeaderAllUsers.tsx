@@ -7,7 +7,7 @@ export function HeaderAllUsers({ style }: any) {
     <div className={style.allusers_header}>
       <button
         onClick={() => {
-          navigate("/");
+          navigate("/login");
           localStorage.removeItem("test");
         }}
         className={style.allusers_exitbutton}
@@ -16,7 +16,7 @@ export function HeaderAllUsers({ style }: any) {
       </button>
       <Exit
         onClick={() => {
-          navigate("/");
+          navigate("/login");
           localStorage.removeItem("test");
         }}
         className={style.allusers_exitbuttonsvg}

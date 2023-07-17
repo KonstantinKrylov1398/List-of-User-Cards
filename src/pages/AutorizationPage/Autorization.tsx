@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import style from "./autorization.css";
 import { Formik, Form, Field } from "formik";
-import * as yup from "yup";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Eye from "../../../assets/Eye.svg";
@@ -25,7 +24,7 @@ export function Autorization() {
               localStorage.setItem("test", JSON.stringify(response.data));
             });
           setSubmitting(false);
-          navigate("/allusers");
+          navigate("/users");
         }}
       >
         {({ errors, touched }) => (
