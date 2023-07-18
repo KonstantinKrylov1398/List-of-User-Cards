@@ -75,6 +75,8 @@
           .userpage_email {
               margin-left: 112px;
               display: flex;
+              align-items: center;
+              height: 24px;
           }
           
           .userpage_emailname {

@@ -1,26 +1,37 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { HeaderAllUsers } from "../../components/HeaderAllUsers";
 import { MainAllUsers } from "../../components/MainAllUsers";
 import style from "./allusers.css";
+import { apiUser } from "../../api";
 export function AllUsers() {
-  const [arrayUsers, setArrayUsers] = useState<any>([]);
-  const axiosGet = (id: number) => {
-    axios.get(`https://reqres.in/api/users?page=${id}`).then((resp) => {
-      resp.data.data.map((user: any) =>
-        setArrayUsers((array: any) => [...array, user])
-      );
-    });
-  };
+  const [page, setPage] = useState(1);
+  const [data, setData] = useState(null);
+
+  const onPage = () => setPage((prev) => prev + 1);
+
   useEffect(() => {
-    axiosGet(1);
-    axiosGet(2);
-  }, [setArrayUsers]);
+    const asyncUsers = async () => {
+      const response = await apiUser.getAll(page);
+      setData((prev): any => {
+        return {
+          ...response,
+          data: prev ? [...prev.data, ...response.data] : response.data,
+        };
+      });
+    };
+
+    asyncUsers();
+  }, [page]);
 
   return (
     <div className={style.background}>
       <HeaderAllUsers style={style} />
-      <MainAllUsers arrayUsers={arrayUsers} style={style} />
+      <MainAllUsers
+        data={data}
+        style={style}
+        isNextPage={page < data?.total_pages}
+        onPage={onPage}
+      />
     </div>
   );
 }

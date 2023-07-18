@@ -27,10 +27,9 @@ export function Registration() {
               password: value.password,
             })
             .then((response) => {
-              localStorage.setItem("test", JSON.stringify(response.data));
+              localStorage.setItem("getToken", JSON.stringify(response.data));
+              navigate("/users");
             });
-
-          navigate("/users");
         }}
         validationSchema={schemaRegistration}
       >

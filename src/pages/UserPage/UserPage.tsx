@@ -11,7 +11,6 @@ export function UserPage() {
   const params = useParams();
   useEffect(() => {
     axios.get(`https://reqres.in/api/users/${params.id}`).then((resp) => {
-      console.log(resp.data.data);
       setGetUser(resp.data.data);
     });
   }, [setGetUser]);
@@ -48,14 +47,14 @@ export function UserPage() {
         <Exit
           onClick={() => {
             navigate("/login");
-            localStorage.removeItem("test");
+            localStorage.removeItem("getToken");
           }}
           className={style.userpage_showsvg}
         />
         <button
           onClick={() => {
             navigate("/login");
-            localStorage.removeItem("test");
+            localStorage.removeItem("getToken");
           }}
           className={style.userpage_headerbuttontwo}
         >

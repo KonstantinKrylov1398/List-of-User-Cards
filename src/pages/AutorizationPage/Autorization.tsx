@@ -20,11 +20,11 @@ export function Autorization() {
               email: value.email,
               password: value.password,
             })
-            .then(function (response) {
-              localStorage.setItem("test", JSON.stringify(response.data));
+            .then((response) => {
+              localStorage.setItem("getToken", JSON.stringify(response.data));
+              navigate("/users");
             });
           setSubmitting(false);
-          navigate("/users");
         }}
       >
         {({ errors, touched }) => (

@@ -1,5 +1,5 @@
 import React from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Exit from "../../assets/Exit.svg";
 export function HeaderAllUsers({ style }: any) {
   const navigate = useNavigate();
@@ -8,7 +8,7 @@ export function HeaderAllUsers({ style }: any) {
       <button
         onClick={() => {
           navigate("/login");
-          localStorage.removeItem("test");
+          localStorage.removeItem("getToken");
         }}
         className={style.allusers_exitbutton}
       >
@@ -17,7 +17,7 @@ export function HeaderAllUsers({ style }: any) {
       <Exit
         onClick={() => {
           navigate("/login");
-          localStorage.removeItem("test");
+          localStorage.removeItem("getToken");
         }}
         className={style.allusers_exitbuttonsvg}
       />
