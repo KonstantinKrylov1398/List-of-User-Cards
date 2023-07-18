@@ -1,6 +1,6 @@
 import * as yup from "yup";
 
-export const schemaAutorization = yup.object().shape({
+export const schemaLogin = yup.object().shape({
   email: yup.string().email("Неверный email").required("Обязательное поле"),
   password: yup
     .string()

@@ -1,0 +1,1 @@
+export { exitingThePage } from "./exitingThePage";

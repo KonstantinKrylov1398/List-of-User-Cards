@@ -1,8 +1,9 @@
-import React, { useState } from "react";
-import Like from "../../assets/Like.svg";
-import Arrow from "../../assets/Arrow.svg";
+import React from "react";
+import Like from "../../../assets/Like.svg";
+import Arrow from "../../../assets/Arrow.svg";
 import { useNavigate } from "react-router-dom";
-export function MainAllUsers({ style, data, isNextPage, onPage }: any) {
+import style from "./mainusers.css";
+export function MainUsers({ data, isNextPage, onPage }) {
   const navigate = useNavigate();
 
   return (
