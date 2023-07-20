@@ -19,6 +19,7 @@ export function LoginPage() {
           onSubmit={(value, { setSubmitting }: any) => {
             setSubmitting(false);
             apiLogin.postLogin(value, navigate, "login");
+            console.log(value);
           }}
         >
           {({ errors, touched }) => (
@@ -53,7 +54,7 @@ export function LoginPage() {
                   onClick={() => setHidePassword((value) => !value)}
                   className={style.form_eye}
                 >
-                  <Eye />
+                  <Eye fill={!hidePassword ? "#512689" : "none"} />
                 </div>
               </div>
               {errors.password && touched.password ? (

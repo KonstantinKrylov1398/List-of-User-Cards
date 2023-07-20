@@ -69,7 +69,7 @@ export function RegistrationPage() {
                   onClick={() => setHidePasswordOne((value): boolean => !value)}
                   className={style.form_eye}
                 >
-                  <Eye />
+                  <Eye fill={!hidePasswordOne ? "#512689" : "none"} />
                 </div>
               </div>
               {errors.password && touched.password ? (
@@ -92,7 +92,7 @@ export function RegistrationPage() {
                   onClick={() => setHidePasswordTwo((value): boolean => !value)}
                   className={style.form_eye}
                 >
-                  <Eye />
+                  <Eye fill={!hidePasswordTwo ? "#512689" : "none"} />
                 </div>
               </div>
               {errors.confirm_password && touched.confirm_password ? (

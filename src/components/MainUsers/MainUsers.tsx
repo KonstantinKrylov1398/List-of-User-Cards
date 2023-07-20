@@ -3,7 +3,12 @@ import Like from "../../../assets/Like.svg";
 import Arrow from "../../../assets/Arrow.svg";
 import { useNavigate } from "react-router-dom";
 import style from "./mainusers.css";
-export function MainUsers({ data, isNextPage, onPage }) {
+import { Pagination } from "../Pagination";
+import { dataUsers } from "../../pages/UsersPage";
+type MainUsers = {
+  data: dataUsers;
+};
+export function MainUsers({ data }: MainUsers) {
   const navigate = useNavigate();
 
   return (
@@ -31,12 +36,8 @@ export function MainUsers({ data, isNextPage, onPage }) {
             })
           : ""}
       </ul>
-      {isNextPage && (
-        <button onClick={onPage} className={style.allusers_buttonshow}>
-          Показать еще
-          <Arrow className={style.allusers_arrow} />
-        </button>
-      )}
+
+      <Pagination />
     </div>
   );
 }

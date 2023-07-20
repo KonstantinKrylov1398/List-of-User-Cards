@@ -7,14 +7,28 @@ import Exit from "../../../assets/Exit.svg";
 import { apiUser } from "../../api";
 import { PrivateRoute } from "../../routes";
 import { exitingThePage } from "../../utils";
+type dataUser = {
+  id: number;
+  email: string;
+  first_name: string;
+  last_name: string;
+  avatar: string;
+};
 export function UserPage() {
-  const [getUser, setGetUser] = useState<any>({});
+  const [getUser, setGetUser] = useState<dataUser>({
+    id: 0,
+    email: "",
+    first_name: "",
+    last_name: "",
+    avatar: "",
+  });
   const navigate = useNavigate();
   const getIdUser = useParams();
+  const id = getIdUser.id!;
 
   useEffect(() => {
     const asyncUser = async () => {
-      const response = await apiUser.getUser(getIdUser.id);
+      const response = await apiUser.getUser(id);
       setGetUser(response.data);
     };
 

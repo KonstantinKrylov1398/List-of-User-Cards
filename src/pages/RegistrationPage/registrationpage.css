@@ -114,6 +114,10 @@
     cursor: pointer;
 }
 
+.form_svg stroke {
+    fill: red;
+}
+
 @media(max-width:375px) {
     .background {
         display: block;
