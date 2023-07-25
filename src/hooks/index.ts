@@ -1,0 +1,1 @@
+export { useExitPage } from "./useExitPage";

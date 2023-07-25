@@ -1,5 +1,5 @@
 {
-    "name": "hotels",
+    "name": "list_user_cards",
     "version": "1.0.0",
     "description": "",
     "main": "",
@@ -28,6 +28,7 @@
         "redux": "^4.2.0",
         "redux-thunk": "^2.4.2",
         "style-loader": "^3.3.1",
+        "styled-components": "^6.0.5",
         "thunk": "^0.0.1",
         "ts-loader": "^9.4.1",
         "typescript": "^4.9.3",

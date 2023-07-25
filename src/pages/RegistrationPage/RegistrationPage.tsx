@@ -1,111 +1,46 @@
-import React, { useState } from "react";
-import style from "./registrationpage.css";
-import { Formik, Form, Field } from "formik";
-import { schemaRegistration } from "../../schemes";
-import Eye from "../../../assets/Eye.svg";
-import { useNavigate } from "react-router-dom";
-import { PublicRoute } from "../../routes";
-import { apiLogin } from "../../api";
+import React from "react";
+import style from "./style.css";
+import { Formik, Form } from "formik";
+import { Link } from "react-router-dom";
+import { useFormRegister } from "./hooks";
+import { PublicRoute } from "src/routes";
+import { schemaRegistration } from "src/schemes";
+import { TextField, PasswordField } from "src/components";
+import { PasswordConfirmationField } from "./components";
+import { CONFIRM_PASSWORD, EMAIL, LOGIN, NAME, PASSWORD } from "src/constans";
 export function RegistrationPage() {
-  const [hidePasswordOne, setHidePasswordOne] = useState(true);
-  const [hidePasswordTwo, setHidePasswordTwo] = useState(true);
-
-  const navigate = useNavigate();
+  const { onSubmit } = useFormRegister();
 
   return (
     <PublicRoute>
-      <div className={style.background}>
+      <div className={style.container}>
         <Formik
-          initialValues={{ name: "", email: "", password: "" }}
-          onSubmit={(value, { setSubmitting }: any) => {
-            setSubmitting(false);
-            apiLogin.postLogin(value, navigate, "register");
+          initialValues={{
+            name: "",
+            email: "",
+            password: "",
+            confirm_password: "",
           }}
+          onSubmit={onSubmit}
           validationSchema={schemaRegistration}
         >
-          {({ errors, touched, handleBlur }: any) => (
+          {() => (
             <Form className={style.form}>
-              <div className={style.form_header}>Регистрация</div>
-              <label className={style.form_label}>Имя</label>
-              <Field
-                style={
-                  errors.name && touched.name
-                    ? { border: "1px solid #FF6161", marginBottom: "4px" }
-                    : null
-                }
-                className={style.form_input}
-                name="name"
-              />
-              {errors.name && touched.name ? (
-                <div className={style.form_error}>{errors.name}</div>
-              ) : null}
-              <label className={style.form_label}>Электронная почта</label>
-              <Field
-                style={
-                  errors.email && touched.email
-                    ? { border: "1px solid #FF6161", marginBottom: "4px" }
-                    : null
-                }
-                className={style.form_input}
-                name="email"
-              />
-              {errors.email && touched.email ? (
-                <div className={style.form_error}>{errors.email}</div>
-              ) : null}
-              <label className={style.form_label}>Пароль</label>
-              <div className={style.form_eye_input}>
-                <Field
-                  onBlur={handleBlur}
-                  style={
-                    errors.password && touched.password
-                      ? { border: "1px solid #FF6161", marginBottom: "4px" }
-                      : null
-                  }
-                  className={style.form_input}
-                  name="password"
-                  type={hidePasswordOne ? "password" : "text"}
-                />
-                <div
-                  onClick={() => setHidePasswordOne((value): boolean => !value)}
-                  className={style.form_eye}
-                >
-                  <Eye fill={!hidePasswordOne ? "#512689" : "none"} />
-                </div>
-              </div>
-              {errors.password && touched.password ? (
-                <div className={style.form_error}>{errors.password}</div>
-              ) : null}
-              <div />
-              <label className={style.form_label}>Подтвердите пароль</label>
-              <div className={style.form_eye_input}>
-                <Field
-                  style={
-                    errors.confirm_password && touched.confirm_password
-                      ? { border: "1px solid #FF6161", marginBottom: "4px" }
-                      : null
-                  }
-                  className={style.form_input}
-                  name="confirm_password"
-                  type={hidePasswordTwo ? "password" : "text"}
-                />
-                <div
-                  onClick={() => setHidePasswordTwo((value): boolean => !value)}
-                  className={style.form_eye}
-                >
-                  <Eye fill={!hidePasswordTwo ? "#512689" : "none"} />
-                </div>
-              </div>
-              {errors.confirm_password && touched.confirm_password ? (
-                <div className={style.form_error}>
-                  {errors.confirm_password}
-                </div>
-              ) : null}
-              <button className={style.form_button}>Зарегистрироваться</button>
-              <button className={style.form_button_registration}>
-                <a onClick={() => navigate("/login")} className={style.form_a}>
+              <div className={style.form__header}>Регистрация</div>
+              <label className={style.form__label}>Имя</label>
+              <TextField name={NAME} />
+              <label className={style.form__label}>Электронная почта</label>
+              <TextField name={EMAIL} />
+              <label className={style.form__label}>Пароль</label>
+              <PasswordField name={PASSWORD} />
+              <label className={style.form__label}>Подтвердите пароль</label>
+              <PasswordConfirmationField name={CONFIRM_PASSWORD} />
+              <button className={style.form__button}>Зарегистрироваться</button>
+              <Link to={LOGIN}>
+                <button className={style.form__link}>
                   Уже зарегистрированы?
-                </a>
-              </button>
+                </button>
+              </Link>
             </Form>
           )}
         </Formik>

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { API_URL } from "../../constans";
+import { API_URL } from "src/constans";
 
 export const getAll = (page = 1) =>
   axios

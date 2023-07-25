@@ -10,6 +10,11 @@
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
     "resolveJsonModule": true,
-    "skipLibCheck": true
-  }
+    "skipLibCheck": true,
+    "baseUrl": "./",
+    "paths": {
+      "src/*": ["src/*"]
+    }
+  },
+  "include": ["custom.d.ts", "src"]
 }
