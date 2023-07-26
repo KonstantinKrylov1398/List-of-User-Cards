@@ -1,11 +1,10 @@
 import React from "react";
 import style from "./style.css";
 import Email from "src/assets/Email.svg";
-import { User } from "src/types";
 type Props = {
-  user: User.Entity;
+  email: string;
 };
-export function Main({ user }: Props) {
+export function Main({ email }: Props) {
   return (
     <div className={style.main}>
       <div className={style.main__textcontent}>
@@ -32,7 +31,7 @@ export function Main({ user }: Props) {
       </div>
       <div className={style.main__email}>
         <Email />
-        <div className={style.main__emailname}>{user.email}</div>
+        <div className={style.main__emailname}>{email}</div>
       </div>
     </div>
   );

@@ -7,7 +7,9 @@ import { PublicRoute } from "src/routes";
 import { schemaRegistration } from "src/schemes";
 import { TextField, PasswordField } from "src/components";
 import { PasswordConfirmationField } from "./components";
-import { CONFIRM_PASSWORD, EMAIL, LOGIN, NAME, PASSWORD } from "src/constans";
+import { ROUTES } from "src/constans";
+import { FIELDS } from "./constans";
+
 export function RegistrationPage() {
   const { onSubmit } = useFormRegister();
 
@@ -16,10 +18,10 @@ export function RegistrationPage() {
       <div className={style.container}>
         <Formik
           initialValues={{
-            name: "",
-            email: "",
-            password: "",
-            confirm_password: "",
+            [FIELDS.NAME]: "",
+            [FIELDS.EMAIL]: "",
+            [FIELDS.PASSWORD]: "",
+            [FIELDS.CONFIRM_PASSWORD]: "",
           }}
           onSubmit={onSubmit}
           validationSchema={schemaRegistration}
@@ -28,15 +30,15 @@ export function RegistrationPage() {
             <Form className={style.form}>
               <div className={style.form__header}>Регистрация</div>
               <label className={style.form__label}>Имя</label>
-              <TextField name={NAME} />
+              <TextField name={FIELDS.NAME} />
               <label className={style.form__label}>Электронная почта</label>
-              <TextField name={EMAIL} />
+              <TextField name={FIELDS.EMAIL} />
               <label className={style.form__label}>Пароль</label>
-              <PasswordField name={PASSWORD} />
+              <PasswordField name={FIELDS.PASSWORD} />
               <label className={style.form__label}>Подтвердите пароль</label>
-              <PasswordConfirmationField name={CONFIRM_PASSWORD} />
+              <PasswordConfirmationField name={FIELDS.CONFIRM_PASSWORD} />
               <button className={style.form__button}>Зарегистрироваться</button>
-              <Link to={LOGIN}>
+              <Link to={ROUTES.LOGIN}>
                 <button className={style.form__link}>
                   Уже зарегистрированы?
                 </button>

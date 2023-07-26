@@ -6,24 +6,14 @@ import { PrivateRoute } from "src/routes";
 import { User } from "src/types";
 import { Header, Main } from "./components";
 
-type Props = {
-  userId: string;
-};
-
 export function UserPage() {
-  const { userId } = useParams<Props>();
+  const { userId } = useParams<{ userId: string }>();
 
-  const [user, setUser] = useState<User.Entity>({
-    id: 0,
-    email: "",
-    first_name: "",
-    last_name: "",
-    avatar: "",
-  });
+  const [user, setUser] = useState<User.Entity>();
 
   useEffect(() => {
     const asyncUser = async () => {
-      const response = await apiUser.getUser(userId ? userId : "");
+      const response = await apiUser.get(userId);
       setUser(response.data);
     };
 
@@ -32,10 +22,12 @@ export function UserPage() {
 
   return (
     <PrivateRoute>
-      <div className={style.container}>
-        <Header user={user} />
-        <Main user={user} />
-      </div>
+      {user && (
+        <div className={style.container}>
+          <Header user={user} />
+          <Main email={user.email} />
+        </div>
+      )}
     </PrivateRoute>
   );
 }

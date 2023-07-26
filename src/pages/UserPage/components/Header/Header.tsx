@@ -5,7 +5,7 @@ import Exit from "src/assets/Exit.svg";
 import { useExitPage } from "src/hooks";
 import { useNavigate } from "react-router-dom";
 import { User } from "src/types";
-import { USERS } from "src/constans";
+import { ROUTES } from "src/constans";
 
 type Props = {
   user: User.Entity;
@@ -15,7 +15,10 @@ export function Header({ user }: Props) {
   const { exitPage } = useExitPage();
   return (
     <div className={style.header}>
-      <div onClick={() => navigate(USERS)} className={style.header__exitpage}>
+      <div
+        onClick={() => navigate(ROUTES.USERS)}
+        className={style.header__exitpage}
+      >
         <ArrowLeft className={style.header__showsvg} />
         <button className={style.header__button}>Назад</button>
       </div>

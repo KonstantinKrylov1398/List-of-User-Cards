@@ -2,8 +2,11 @@ import { Field, useField } from "formik";
 import React, { useState } from "react";
 import style from "./style.css";
 import Eye from "src/assets/Eye.svg";
-import { Auth } from "src/types";
-export function PasswordConfirmationField({ name }: Auth.Field) {
+
+type Props = {
+  name: string;
+};
+export function PasswordConfirmationField({ name }: Props) {
   const [field, meta] = useField(name);
   const [hidePassword, setHidePassword] = useState(true);
 

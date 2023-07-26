@@ -1,9 +1,12 @@
 import { Field, useField } from "formik";
 import React from "react";
-import { Auth } from "src/types";
 import style from "./style.css";
 
-export function TextField({ name }: Auth.Field) {
+type Props = {
+  name: string;
+};
+
+export function TextField({ name }: Props) {
   const [field, meta] = useField(name);
 
   return (

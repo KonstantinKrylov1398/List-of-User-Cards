@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
 import { Navigate } from "react-router-dom";
-import { LOGIN, TOKEN } from "src/constans";
+import { ROUTES, TOKEN } from "src/constans";
 
 type Props = {
   children: ReactNode;
@@ -8,7 +8,7 @@ type Props = {
 
 export const PrivateRoute = ({ children }: Props) => {
   if (!localStorage.getItem(TOKEN)) {
-    return <Navigate to={LOGIN} />;
+    return <Navigate to={ROUTES.LOGIN} />;
   }
   return <>{children}</>;
 };

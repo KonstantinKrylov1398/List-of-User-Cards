@@ -3,7 +3,10 @@ import Eye from "src/assets/Eye.svg";
 import style from "./style.css";
 import { Field, useField } from "formik";
 
-export function PasswordField({ name }: any) {
+type Props = {
+  name: string;
+};
+export function PasswordField({ name }: Props) {
   const [field, meta] = useField(name);
   const [hidePassword, setHidePassword] = useState(true);
 

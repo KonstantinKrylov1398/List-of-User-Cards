@@ -1,11 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import { logout } from "src/api";
-import { LOGIN, TOKEN } from "src/constans";
+import { ROUTES, TOKEN } from "src/constans";
 
 export const useExitPage = () => {
   const navigate = useNavigate();
   const exitPage = () => {
-    navigate(LOGIN);
+    navigate(ROUTES.LOGIN);
     localStorage.removeItem(TOKEN);
     logout();
   };
