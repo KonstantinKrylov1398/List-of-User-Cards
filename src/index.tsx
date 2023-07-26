@@ -1,6 +1,11 @@
 import { App } from "./App";
 import React from "react";
-import ReactDOM from "react-dom";
+import { createRoot } from "react-dom/client";
 import "normalize.css";
 
-ReactDOM.render(<App />, document.getElementById("App"));
+const domNode = document.getElementById("App");
+
+if (domNode) {
+  const root = createRoot(domNode);
+  root.render(<App />);
+}
