@@ -1,3 +1,3 @@
 export { API_URL } from "./app";
-export { TOKEN } from "./token";
+export { TOKEN, LIKE } from "./localStorage";
 export { ROUTES } from "./routes";

@@ -1,5 +1,6 @@
  .list__like {
      align-self: flex-end;
+     z-index: 1;
  }
  
  .list__username {
@@ -16,8 +17,7 @@
  .list__ul {
      width: 100%;
      margin-top: 48px;
-     padding-left: 80px;
-     padding-right: 60px;
+     padding-left: 20px;
      display: flex;
      flex-wrap: wrap;
      justify-content: center;

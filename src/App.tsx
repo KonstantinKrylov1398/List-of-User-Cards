@@ -1,6 +1,12 @@
 import React from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-import { RegistrationPage, LoginPage, UsersPage, UserPage } from "src/pages";
+import {
+  RegistrationPage,
+  LoginPage,
+  UsersPage,
+  UserPage,
+  NotFoundPage,
+} from "src/pages";
 import { ROUTES } from "./constans";
 import "./main.global.css";
 
@@ -13,7 +19,7 @@ export function App() {
         <Route path={ROUTES.REGISTER} element={<RegistrationPage />} />
         <Route path={ROUTES.USERS} element={<UsersPage />} />
         <Route path={ROUTES.USER} element={<UserPage />} />
-        <Route path="*" element={<h1> Не найдена страница</h1>} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </BrowserRouter>
   );

@@ -1,43 +1,47 @@
 import React from "react";
+import { UsePagination } from "./hooks";
 import style from "./style.css";
 
-export function Pagination({ page, setPage, totalPages }: any) {
-  const pageNumbers = [];
-
-  for (let i = 1; i <= totalPages; i++) {
-    pageNumbers.push(i);
-  }
-
+type Props = {
+  page: number;
+  setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
+  totalPages: number;
+};
+export function Pagination({ page, setCurrentPage, totalPages }: Props) {
+  const { getVisiblePages } = UsePagination();
   return (
-    <div className={style.allusers_pagination}>
+    <div className={style.pagination}>
       <button
-        className={style.allusers_onpage}
-        onClick={() =>
-          page > 1
-            ? setPage((page: any) => page - 1)
-            : setPage((page: any) => page)
-        }
+        className={style.pagination__button}
+        onClick={() => setCurrentPage((page) => page - 1)}
+        disabled={page === 1}
       >
         Назад
       </button>
-      <div style={{ display: "flex", justifyContent: "center", width: "50%" }}>
-        {pageNumbers.map((number) => (
-          <button
-            className={style.allusers_numberpage}
-            onClick={() => setPage(number)}
-            key={number}
-          >
-            {number}
-          </button>
-        ))}
+
+      <div className={style.pagination__page}>
+        {getVisiblePages(totalPages, page)?.map((numberPage, index, array) => {
+          return (
+            <div key={numberPage} className={style.page}>
+              {array[index - 1] + 2 < numberPage && (
+                <div className={style.page__point}>...</div>
+              )}
+              <button
+                className={`${style.page__button} ${
+                  page === numberPage ? style.page__button_effects : 1
+                }`}
+                onClick={() => setCurrentPage(numberPage)}
+              >
+                {numberPage}
+              </button>
+            </div>
+          );
+        })}
       </div>
       <button
-        className={style.allusers_onpage}
-        onClick={() =>
-          page < totalPages
-            ? setPage((page: any) => page + 1)
-            : setPage((page: any) => page)
-        }
+        className={style.pagination__button}
+        onClick={() => setCurrentPage((page) => page + 1)}
+        disabled={page === totalPages}
       >
         Далее
       </button>

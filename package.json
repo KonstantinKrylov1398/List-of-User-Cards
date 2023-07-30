@@ -20,6 +20,7 @@
         "file-loader": "^6.2.0",
         "formik": "^2.4.2",
         "html-webpack-plugin": "^5.5.0",
+        "json-server": "^0.17.3",
         "normalize.css": "^8.0.1",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",

@@ -6,7 +6,7 @@ import { Header, List, Pagination } from "./components";
 import style from "./style.css";
 
 export function UsersPage() {
-  const [page, setPage] = useState(1);
+  const [page, setCurrentPage] = useState(1);
   const [data, setData] = useState<Api.Response<User.Entity[]>>();
 
   useEffect(() => {
@@ -20,15 +20,17 @@ export function UsersPage() {
 
   return (
     <PrivateRoute>
-      <div className={style.container}>
-        <Header />
-        <List users={data?.data} />
-        <Pagination
-          page={page}
-          setPage={setPage}
-          totalPages={data?.total_pages}
-        />
-      </div>
+      {data && (
+        <div className={style.container}>
+          <Header />
+          <List users={data.data} />
+          <Pagination
+            page={page}
+            setCurrentPage={setCurrentPage}
+            totalPages={data.total_pages}
+          />
+        </div>
+      )}
     </PrivateRoute>
   );
 }
