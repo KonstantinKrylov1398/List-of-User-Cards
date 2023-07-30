@@ -7,6 +7,7 @@
     cursor: pointer;
     text-align: center;
     padding: 8px 16px 8px 16px;
+    color: #151317;
 }
 
 .pagination {
@@ -35,6 +36,7 @@
     cursor: pointer;
     text-align: center;
     padding: 8px 16px 8px 16px;
+    color: #151317;
 }
 
 .page:not(:last-child) {
