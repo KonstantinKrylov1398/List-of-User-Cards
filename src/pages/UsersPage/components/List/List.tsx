@@ -7,18 +7,16 @@ import type { User } from "src/types";
 import { LIKE } from "src/constans";
 
 type Props = {
-  users?: User.Entity[];
+  users: User.Entity[];
 };
 
 export function List({ users }: Props) {
-  const listUsers =
-    users &&
-    users.map((user) => {
-      return {
-        ...user,
-        like: false,
-      };
-    });
+  const listUsers = users.map((user) => {
+    return {
+      ...user,
+      like: false,
+    };
+  });
   const getUsers = localStorage.getItem(LIKE);
   const navigate = useNavigate();
   const [currentUsers, setCurrentUsers] = useState<User.Entity[]>(
