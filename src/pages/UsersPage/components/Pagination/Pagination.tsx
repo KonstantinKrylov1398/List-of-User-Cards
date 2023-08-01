@@ -9,6 +9,7 @@ type Props = {
 };
 export function Pagination({ page, setCurrentPage, totalPages }: Props) {
   const { getVisiblePages } = UsePagination();
+
   return (
     <div className={style.pagination}>
       <button

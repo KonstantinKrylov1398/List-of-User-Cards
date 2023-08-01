@@ -13,7 +13,6 @@ export const UsePagination = () => {
       return [1, 2, totalPages - 2, totalPages - 1, totalPages];
     }
     if (totalPages < 2) return;
-
     return [1, 2, 3, 4, totalPages];
   };
   return { getVisiblePages };
