@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { apiUsers } from "src/api";
-import { LIKE } from "src/constans";
 import { PrivateRoute } from "src/routes";
 import type { Api, User } from "src/types";
 import { Header, List, Pagination } from "./components";
@@ -23,7 +22,7 @@ export function UsersPage() {
       {data && (
         <div className={style.container}>
           <Header />
-          <List users={data.data} setData={setData} />
+          <List users={data.data} />
           <Pagination
             page={page}
             setCurrentPage={setCurrentPage}
