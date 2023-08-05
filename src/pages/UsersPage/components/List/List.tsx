@@ -9,10 +9,10 @@ import LikeClick from "src/assets/LikeClick.svg";
 type Props = {
   users: User.Entity[];
 };
-const filterLikes = (likes) =>
-  likes.reduce((accumulator, current) => {
+const filterLikes = (likes: any) =>
+  likes.reduce((accumulator: any, current: any) => {
     const index = accumulator.findIndex(
-      (obj) => obj.target_id === current.target_id
+      (obj: any) => obj.target_id === current.target_id
     );
     if (index === -1) {
       return [...accumulator, current];
@@ -21,8 +21,8 @@ const filterLikes = (likes) =>
   }, []);
 
 export function List({ users }: Props) {
-  const getLikes = JSON.parse(localStorage.getItem("likes"));
-  const [likes, setLikes] = useState(getLikes ? getLikes : []);
+  const getLikes = localStorage.getItem("likes");
+  const [likes, setLikes] = useState(getLikes ? JSON.parse(getLikes) : []);
   const FILTER_LIKES = filterLikes(likes);
   const navigate = useNavigate();
 
@@ -30,7 +30,7 @@ export function List({ users }: Props) {
     ...user,
     like:
       FILTER_LIKES.length > 0 &&
-      FILTER_LIKES.find((like) => like.target_id === user.id),
+      FILTER_LIKES.find((like: any) => like.target_id === user.id),
   }));
 
   const handleLikeClick = (currentUser: User.Entity) => {
@@ -39,7 +39,7 @@ export function List({ users }: Props) {
       user_id: localStorage.getItem(TOKEN),
       target_id: currentUser.id,
     };
-    setLikes((likes) => [...likes, like]);
+    setLikes((likes: any) => [...likes, like]);
   };
 
   useEffect(() => {
