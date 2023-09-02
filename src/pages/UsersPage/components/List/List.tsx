@@ -9,29 +9,18 @@ import LikeClick from "src/assets/LikeClick.svg";
 type Props = {
   users: User.Entity[];
 };
-const filterLikes = (likes: any) =>
-  likes.reduce((accumulator: any, current: any) => {
-    const index = accumulator.findIndex(
-      (obj: any) => obj.target_id === current.target_id
-    );
-    if (index === -1) {
-      return [...accumulator, current];
-    }
-    return accumulator;
-  }, []);
+type likes = {
+  id: string;
+  user_id: string | null;
+  target_id: number;
+};
 
 export function List({ users }: Props) {
   const getLikes = localStorage.getItem("likes");
-  const [likes, setLikes] = useState(getLikes ? JSON.parse(getLikes) : []);
-  const FILTER_LIKES = filterLikes(likes);
+  const [likes, setLikes] = useState<likes[]>(
+    getLikes ? JSON.parse(getLikes) : []
+  );
   const navigate = useNavigate();
-
-  const result = users.map((user) => ({
-    ...user,
-    like:
-      FILTER_LIKES.length > 0 &&
-      FILTER_LIKES.find((like: any) => like.target_id === user.id),
-  }));
 
   const handleLikeClick = (currentUser: User.Entity) => {
     const like = {
@@ -39,17 +28,30 @@ export function List({ users }: Props) {
       user_id: localStorage.getItem(TOKEN),
       target_id: currentUser.id,
     };
-    setLikes((likes: any) => [...likes, like]);
+    setLikes((likes) => [...likes, like]);
+
+    const index = likes.findIndex((like) => like.target_id === currentUser.id);
+    if (index !== -1) {
+      const updatedLikes = [...likes];
+      setLikes(updatedLikes);
+    } else {
+      const updatedLikes = [...likes, like];
+      setLikes(updatedLikes);
+    }
   };
 
   useEffect(() => {
-    localStorage.setItem("likes", JSON.stringify(FILTER_LIKES));
-  }, [FILTER_LIKES]);
-
+    localStorage.setItem("likes", JSON.stringify(likes));
+  }, [likes]);
+  console.log("likes", likes);
   return (
     <div className={style.list}>
       <ul className={style.list__ul}>
-        {result.map((user: User.Entity) => {
+        {users.map((user: User.Entity) => {
+          user.like =
+            likes.length > 0 &&
+            likes.find((like: any) => like.target_id === user.id);
+
           return (
             <li className={style.list__li} key={user.id}>
               <div
