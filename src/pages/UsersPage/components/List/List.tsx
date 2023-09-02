@@ -33,6 +33,7 @@ export function List({ users }: Props) {
     const index = likes.findIndex((like) => like.target_id === currentUser.id);
     if (index !== -1) {
       const updatedLikes = [...likes];
+      updatedLikes.splice(index, 1);
       setLikes(updatedLikes);
     } else {
       const updatedLikes = [...likes, like];
@@ -43,6 +44,7 @@ export function List({ users }: Props) {
   useEffect(() => {
     localStorage.setItem("likes", JSON.stringify(likes));
   }, [likes]);
+  console.log("likes", likes);
   return (
     <div className={style.list}>
       <ul className={style.list__ul}>
