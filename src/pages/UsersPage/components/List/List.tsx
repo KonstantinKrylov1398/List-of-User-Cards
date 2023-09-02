@@ -43,7 +43,6 @@ export function List({ users }: Props) {
   useEffect(() => {
     localStorage.setItem("likes", JSON.stringify(likes));
   }, [likes]);
-  console.log("likes", likes);
   return (
     <div className={style.list}>
       <ul className={style.list__ul}>
